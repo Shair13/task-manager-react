@@ -26,7 +26,7 @@ export const getTasks = async (successCallback) => {
 
 export const addTask = async (data) => {
     try {
-        const response = await fetch(`${API_URL}/tasks`, {
+        await fetch(`${API_URL}/tasks`, {
             method: "POST",
             headers: {
                 Authorization: API_KEY,
@@ -34,14 +34,14 @@ export const addTask = async (data) => {
             },
             body: JSON.stringify(data)
         })
-    } catch (err){
+    } catch (err) {
         console.error(err)
     }
 }
 
 export const updateTask = async (id, data) => {
     try {
-        const response = await fetch(`${API_URL}/tasks/${id}`, {
+        await fetch(`${API_URL}/tasks/${id}`, {
             method: "PUT",
             headers: {
                 Authorization: API_KEY,
@@ -49,22 +49,20 @@ export const updateTask = async (id, data) => {
             },
             body: JSON.stringify(data)
         })
-    } catch (err){
+    } catch (err) {
         console.error(err)
     }
 }
 
-export const deleteTask = async (id, data) => {
+export const deleteTask = async (id) => {
     try {
-        const response = await fetch(`${API_URL}/tasks/${id}`, {
+        await fetch(`${API_URL}/tasks/${id}`, {
             method: "DELETE",
             headers: {
                 Authorization: API_KEY,
-                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
         })
-    } catch (err){
+    } catch (err) {
         console.error(err)
     }
 }
