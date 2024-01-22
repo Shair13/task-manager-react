@@ -34,6 +34,7 @@ export const getOperations = async (taskId, successCallback) => {
 export const addOperation = async (taskId, data) => {
     try {
         await fetch(`${API_URL}/tasks/${taskId}/operations`, {
+            method: "POST",
             headers: {
                 Authorization: API_KEY,
                 'Content-Type': 'application/json'
@@ -66,8 +67,8 @@ export const getOperation = async (operationId, successCallback) => {
 }
 
 export const updateOperation = async (operationId, data) => {
-    try{
-        await fetch(`${API_URL}/api/operations/${operationId}`, {
+    try {
+        await fetch(`${API_URL}/operations/${operationId}`, {
             method: "PUT",
             headers: {
                 Authorization: API_KEY,
@@ -75,7 +76,7 @@ export const updateOperation = async (operationId, data) => {
             },
             body: JSON.stringify(data)
         })
-    }catch (err){
+    } catch (err) {
         console.error(err);
     }
 }
@@ -88,7 +89,7 @@ export const deleteOperation = async (operationId) => {
                 Authorization: API_KEY,
             },
         })
-    }catch (err){
+    } catch (err) {
         console.error(err);
     }
 }
