@@ -21,7 +21,7 @@ function App() {
 
     const onRemoveTask = async (taskId) => {
         await deleteTask(taskId);
-        await setToggle(prev => !prev);
+        setToggle(prev => !prev);
     }
 
     return (

@@ -16,8 +16,8 @@ const Task = ({title, description, taskId, status, onRemoveTask}) => {
             description: description,
             status: "closed"
         }
-        await setLocalStatus("closed")
         await updateTask(taskId, data)
+        setLocalStatus("closed")
     }
 
     const onAddOperationHandler = () => {
