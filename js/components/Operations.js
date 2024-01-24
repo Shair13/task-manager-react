@@ -18,10 +18,10 @@ const Operations = ({taskId, form, setForm, operations, setRefreshOperationsTogg
         e.preventDefault();
         if (operation.description.length > 0) {
             await addOperation(taskId, operation);
-            await setForm(false);
-            await setOperation({description: "", timeSpent: 0});
-            await setRefreshOperationsToggle(prev => !prev);
-
+            console.log("from add button handler")
+            setForm(false);
+            setOperation({description: "", timeSpent: 0});
+            setRefreshOperationsToggle(prev => !prev);
         } else {
             console.warn("description must have at least 1 letter")
         }

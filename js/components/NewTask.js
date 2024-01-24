@@ -21,8 +21,8 @@ const NewTask = ({onNewTask}) => {
         e.preventDefault();
         if (newTask.title.length > 0 && newTask.description.length > 0) {
             await addTask(newTask);
-            await onNewTask();
-            await setNewTask({
+            onNewTask();
+            setNewTask({
                 title: "",
                 description: "",
                 status: "open"

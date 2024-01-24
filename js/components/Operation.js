@@ -7,9 +7,9 @@ const Operation = ({description, timeSpent, status, operationId, setRefreshOpera
     const [timeInputToggle, setTimeInputToggle] = useState(true);
     const [newTime, setNewTime] = useState(0);
 
-
     const timeUpdateInputHandler = (e) => {
-        setNewTime(e.target.value)
+        const time = +e.target.value
+        setNewTime(time)
     }
 
     const addTimeBtnHandler = (e) => {
@@ -20,16 +20,16 @@ const Operation = ({description, timeSpent, status, operationId, setRefreshOpera
 
     const updateTimeHandler = async (e) => {
         e.preventDefault();
-        await updateOperation(operationId, {description: description, timeSpent: timeSpent * 1 + newTime * 1}); //Mimo, iż JS zapewnia, że usunięta 1 nic nie zmienia to zmienia, chociaż mega razi w oczy to pomaga...
-        await setNewTime(0);
-        await setRefreshOperationsToggle(prev => !prev);
-        await setTimeInputToggle(prev => true);
+        await updateOperation(operationId, {description: description, timeSpent: newTime + timeSpent});
+        setNewTime(0);
+        setRefreshOperationsToggle(prev => !prev);
+        setTimeInputToggle(prev => true);
     }
 
     const onRemoveOperationHandler = async (e) => {
         e.preventDefault();
         await deleteOperation(operationId)
-        await setRefreshOperationsToggle(prev => !prev);
+        setRefreshOperationsToggle(prev => !prev);
     }
 
     return (
